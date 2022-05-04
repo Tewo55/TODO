@@ -33,7 +33,7 @@ const PrintTodo = (props) => {
                 borderRadius: "50%",
                 position: "absolute",
                 left: "5px",
-                top: "40%",
+                top: "4%",
               }}
             ></div>
             {props.text}

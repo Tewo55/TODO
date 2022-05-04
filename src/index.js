@@ -32,7 +32,6 @@ class App extends React.Component {
         ],
         value: "",
       });
-      console.log(this.state.Priority);
     }
   };
   priority1 = () => {
@@ -60,7 +59,6 @@ class App extends React.Component {
           borderRadius: "25px",
         }}
       >
-        {console.log(this.state.priority)}
         <div style={{ textAlign: "center", margin: "0 auto" }}>
           <h2 className="ui icon header">
             <i className="list alternate outline icon"></i>
