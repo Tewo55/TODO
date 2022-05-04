@@ -94,6 +94,10 @@ class App extends React.Component {
                 style={{ marginRight: "10%" }}
               />
               <button
+                style={{
+                  position: "relative",
+                  width: "auto",
+                }}
                 className="ui inverted primary button"
                 onClick={this.printValue}
               >
