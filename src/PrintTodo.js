@@ -4,47 +4,76 @@ const PrintTodo = (props) => {
   let backgroundColor = "white";
   switch (props.priority) {
     case 1:
-      backgroundColor = "red";
+      backgroundColor = "#FD5D5D";
       break;
     case 2:
       backgroundColor = "orange";
       break;
     case 3:
-      backgroundColor = "black";
+      backgroundColor = "#343a40";
       break;
   }
+  let styleChange = true;
+  function Change() {
+    if (styleChange == true) {
+      styleChange = false;
+    } else {
+      styleChange = true;
+    }
+  }
+  let lineThorugh = "none";
+  function throughLine() {
+    if (styleChange == true) {
+      {
+        lineThorugh = "line-through";
+      }
+    } else {
+      lineThorugh = "none";
+    }
+  }
+
   return (
-    <div className="ui inverted segment">
+    <div
+      className="ui inverted segment"
+      style={{ borderRadius: "10px", backgroundColor }}
+    >
       <div
         className="ui inverted relaxed divided list"
         style={{ color: "red" }}
       >
-        <div className="item">
-          <div className="header">
+        <div className="item" style={{ height: "auto" }}>
+          <div
+            className="header"
+            style={{
+              width: "450px",
+              throughLine,
+              lineThorugh,
+            }}
+          >
             <div
-              className="prioritätKreis"
+              class="ui checkbox"
               style={{
-                height: "15px",
-
-                width: "15px",
-                backgroundColor,
-                borderColor: "white",
-                border: "3px solid white",
-                borderRadius: "50%",
-                position: "absolute",
-                left: "5px",
-                top: "4%",
+                display: "flex",
+                justifyContent: "flex-start",
               }}
-            ></div>
-            {props.text}
-            {props.priority}
+            >
+              <input type="checkbox" name="example" onClick={Change} />
+              <label style={{ color: "white", textDecoration: "none" }}>
+                CHECK
+              </label>
+            </div>
 
+            {props.text}
             <button
               onClick={() => props.onDelete(props.index)}
-              className="ui compact icon button"
-              style={{ marginLeft: "10px" }}
+              className="negative ui button"
+              style={{
+                display: "flex",
+                alignItems: "flex-end",
+                padding: "8px",
+              }}
             >
-              <i className="times circle outline icon"></i>
+              X
             </button>
           </div>
         </div>

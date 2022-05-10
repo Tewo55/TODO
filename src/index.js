@@ -7,6 +7,15 @@ class App extends React.Component {
     value: "",
     list: [],
     priority: 3,
+    checked: true,
+  };
+
+  handleCheck = () => {
+    if (this.state.checked == true) {
+      this.setState({ checked: false });
+    } else {
+      this.setState({ checked: true });
+    }
   };
 
   handleDelete = (index) => {
@@ -21,14 +30,16 @@ class App extends React.Component {
 
   printValue = (e) => {
     e.preventDefault();
-
     if (this.state.value === "") {
       alert("Fehler");
     } else {
       this.setState({
         list: [
           ...this.state.list,
-          { title: this.state.value, priorität: this.state.priority },
+          {
+            title: this.state.value,
+            priorität: this.state.priority,
+          },
         ],
         value: "",
       });
@@ -47,19 +58,18 @@ class App extends React.Component {
   render() {
     return (
       <div
+        className="border"
         style={{
-          padding: 30,
           height: "auto",
-          textAlign: "left",
-          maxWidth: 500,
-          marginTop: "10px",
-          marginBottom: "auto",
-          marginLeft: "30%",
+          width: "500px",
+          padding: "5px",
+          display: "flex",
+          justifyContent: "center",
           border: "5px solid black",
           borderRadius: "25px",
         }}
       >
-        <div style={{ textAlign: "center", margin: "0 auto" }}>
+        <div style={{ textAlign: "center", margin: "auto" }}>
           <h2 className="ui icon header">
             <i className="list alternate outline icon"></i>
             <div className="content">
@@ -93,6 +103,8 @@ class App extends React.Component {
                 onChange={this.getInput}
                 style={{ marginRight: "10%" }}
               />
+            </div>
+            <div style={{ padding: "5px" }}>
               <button
                 style={{
                   position: "relative",
@@ -107,6 +119,7 @@ class App extends React.Component {
           </form>
           {this.state.list.map((item, index) => (
             <PrintTodo
+              onCheck={this.handleCheck}
               text={item.title}
               priority={item.priorität}
               index={index}
