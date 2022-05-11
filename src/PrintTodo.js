@@ -13,23 +13,29 @@ const PrintTodo = (props) => {
       backgroundColor = "#343a40";
       break;
   }
-  let styleChange = true;
-  function Change() {
-    if (styleChange == true) {
-      styleChange = false;
-    } else {
-      styleChange = true;
-    }
-  }
-  let lineThorugh = "none";
-  function throughLine() {
-    if (styleChange == true) {
-      {
-        lineThorugh = "line-through";
+  switch (props.checked) {
+    case true:
+      backgroundColor = "#33CA7F";
+      break;
+    case false:
+      switch (props.priority) {
+        case 1:
+          backgroundColor = "#FD5D5D";
+          break;
+        case 2:
+          backgroundColor = "orange";
+          break;
+        case 3:
+          backgroundColor = "#343a40";
+          break;
       }
-    } else {
-      lineThorugh = "none";
-    }
+      break;
+  }
+
+  let styleChange = true;
+
+  function Change() {
+    props.onCheck(props.index);
   }
 
   return (
@@ -46,8 +52,6 @@ const PrintTodo = (props) => {
             className="header"
             style={{
               width: "450px",
-              throughLine,
-              lineThorugh,
             }}
           >
             <div
@@ -57,7 +61,12 @@ const PrintTodo = (props) => {
                 justifyContent: "flex-start",
               }}
             >
-              <input type="checkbox" name="example" onClick={Change} />
+              <input
+                type="checkbox"
+                name="example"
+                onClick={Change}
+                checked={props.checked}
+              />
               <label style={{ color: "white", textDecoration: "none" }}>
                 CHECK
               </label>

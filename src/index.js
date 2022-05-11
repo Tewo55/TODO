@@ -7,14 +7,23 @@ class App extends React.Component {
     value: "",
     list: [],
     priority: 3,
-    checked: true,
+    bool: true,
   };
 
-  handleCheck = () => {
-    if (this.state.checked == true) {
-      this.setState({ checked: false });
+  handleCheck = (index) => {
+    const list = this.state.list;
+    if (this.state.bool == false) {
+      this.setState({
+        list: list,
+        bool: true,
+      });
+      list[index].checked = this.state.bool;
     } else {
-      this.setState({ checked: true });
+      this.setState({
+        list: list,
+        bool: false,
+      });
+      list[index].checked = this.state.bool;
     }
   };
 
@@ -119,6 +128,7 @@ class App extends React.Component {
           </form>
           {this.state.list.map((item, index) => (
             <PrintTodo
+              checked={item.checked}
               onCheck={this.handleCheck}
               text={item.title}
               priority={item.priorität}
