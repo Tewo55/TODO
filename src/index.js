@@ -1,30 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import PrintTodo from "./PrintTodo";
+import PriorityBtn from "./PriorityBtn";
 
 class App extends React.Component {
   state = {
     value: "",
     list: [],
     priority: 3,
-    bool: true,
   };
 
   handleCheck = (index) => {
     const list = this.state.list;
-    if (this.state.bool == false) {
-      this.setState({
-        list: list,
-        bool: true,
-      });
-      list[index].checked = this.state.bool;
-    } else {
-      this.setState({
-        list: list,
-        bool: false,
-      });
-      list[index].checked = this.state.bool;
-    }
+    list[index].checked = !list[index].checked;
+    this.setState({
+      list: list,
+    });
   };
 
   handleDelete = (index) => {
@@ -54,6 +45,7 @@ class App extends React.Component {
       });
     }
   };
+
   priority1 = () => {
     this.setState({ priority: 1 });
   };
@@ -84,21 +76,21 @@ class App extends React.Component {
             <div className="content">
               MY LIST
               <div className="sub header">Füge etwas deiner Liste hinzu</div>
-              <button className="ui red basic button" onClick={this.priority1}>
-                Priorität 1
-              </button>
-              <button
-                className="ui orange basic button"
+              <PriorityBtn
+                name="ui red basic button"
+                onClick={this.priority1}
+                Priority123="Priorität 1"
+              />
+              <PriorityBtn
+                name="ui orange basic button"
                 onClick={this.priority2}
-              >
-                Priorität 2
-              </button>
-              <button
-                className="ui black basic button"
+                Priority123="Priorität 2"
+              />
+              <PriorityBtn
+                name="ui black basic button"
                 onClick={this.priority3}
-              >
-                Priorität 3
-              </button>
+                Priority123="Priorität 3"
+              />
             </div>
           </h2>
 

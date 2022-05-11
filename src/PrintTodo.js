@@ -32,8 +32,6 @@ const PrintTodo = (props) => {
       break;
   }
 
-  let styleChange = true;
-
   function Change() {
     props.onCheck(props.index);
   }
@@ -77,6 +75,7 @@ const PrintTodo = (props) => {
               onClick={() => props.onDelete(props.index)}
               className="negative ui button"
               style={{
+                boxShadow: "1px 1px",
                 display: "flex",
                 alignItems: "flex-end",
                 padding: "8px",
