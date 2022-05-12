@@ -53,7 +53,7 @@ const PrintTodo = (props) => {
             }}
           >
             <div
-              class="ui checkbox"
+              className="ui checkbox"
               style={{
                 display: "flex",
                 justifyContent: "flex-start",

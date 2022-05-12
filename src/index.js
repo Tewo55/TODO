@@ -1,4 +1,5 @@
 import React from "react";
+import PrioritySelect from "./PrioritySelect";
 import ReactDOM from "react-dom";
 import PrintTodo from "./PrintTodo";
 import PriorityBtn from "./PriorityBtn";
@@ -46,17 +47,8 @@ class App extends React.Component {
     }
   };
 
-  // handlePrioritySelected = (priority) => {
-  //   this.setState({ priority: priority });
-  // };
-  priority1 = () => {
-    this.setState({ priority: 1 });
-  };
-  priority2 = () => {
-    this.setState({ priority: 2 });
-  };
-  priority3 = () => {
-    this.setState({ priority: 3 });
+  handlePrioritySelected = (priority) => {
+    this.setState({ priority: priority });
   };
 
   render() {
@@ -79,12 +71,9 @@ class App extends React.Component {
             <div className="content">
               MY LIST
               <div className="sub header">Füge etwas deiner Liste hinzu</div>
-              <PriorityBtn priority="1" onClick={this.priority1} />
-              <PriorityBtn priority="2" onClick={this.priority2} />
-              <PriorityBtn priority="3" onClick={this.priority3} />
-              {/* <PrioritySelect
+              <PrioritySelect
                 onPrioritySelected={this.handlePrioritySelected}
-              /> */}
+              />
             </div>
           </h2>
 
