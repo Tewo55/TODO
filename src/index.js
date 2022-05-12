@@ -46,6 +46,9 @@ class App extends React.Component {
     }
   };
 
+  // handlePrioritySelected = (priority) => {
+  //   this.setState({ priority: priority });
+  // };
   priority1 = () => {
     this.setState({ priority: 1 });
   };
@@ -76,21 +79,12 @@ class App extends React.Component {
             <div className="content">
               MY LIST
               <div className="sub header">Füge etwas deiner Liste hinzu</div>
-              <PriorityBtn
-                name="ui red basic button"
-                onClick={this.priority1}
-                Priority123="Priorität 1"
-              />
-              <PriorityBtn
-                name="ui orange basic button"
-                onClick={this.priority2}
-                Priority123="Priorität 2"
-              />
-              <PriorityBtn
-                name="ui black basic button"
-                onClick={this.priority3}
-                Priority123="Priorität 3"
-              />
+              <PriorityBtn priority="1" onClick={this.priority1} />
+              <PriorityBtn priority="2" onClick={this.priority2} />
+              <PriorityBtn priority="3" onClick={this.priority3} />
+              {/* <PrioritySelect
+                onPrioritySelected={this.handlePrioritySelected}
+              /> */}
             </div>
           </h2>
 
