@@ -13,6 +13,8 @@ const PriorityBtn = (props) => {
     case 3:
       className = "ui black basic button";
       break;
+    default:
+      break;
   }
 
   const handleClick = () => {
