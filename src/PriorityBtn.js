@@ -8,7 +8,7 @@ const PriorityBtn = (props) => {
       className = "ui red basic button";
       break;
     case 2:
-      className = "ui orange basic button";
+      className = "ui yellow basic button";
       break;
     case 3:
       className = "ui black basic button";

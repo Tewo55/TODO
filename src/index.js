@@ -2,7 +2,6 @@ import React from "react";
 import PrioritySelect from "./PrioritySelect";
 import ReactDOM from "react-dom";
 import PrintTodo from "./PrintTodo";
-import PriorityBtn from "./PriorityBtn";
 
 class App extends React.Component {
   state = {
@@ -29,7 +28,7 @@ class App extends React.Component {
     this.setState({ value: event.target.value });
   };
 
-  printValue = (e) => {
+  addItem = (e) => {
     e.preventDefault();
     if (this.state.value === "") {
       alert("Fehler");
@@ -95,7 +94,7 @@ class App extends React.Component {
                   width: "auto",
                 }}
                 className="ui inverted primary button"
-                onClick={this.printValue}
+                onClick={this.addItem}
               >
                 Hinzufügen
               </button>

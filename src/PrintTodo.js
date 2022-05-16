@@ -1,35 +1,13 @@
 import React from "react";
 
+const colors = { 1: "red", 2: "yellow", 3: "black" };
+const checkedColors = { 1: "green", 2: "green", 3: "green" };
+
 const PrintTodo = (props) => {
-  let backgroundColor = "white";
-  switch (props.priority) {
-    case 1:
-      backgroundColor = "#FD5D5D";
-      break;
-    case 2:
-      backgroundColor = "orange";
-      break;
-    case 3:
-      backgroundColor = "#343a40";
-      break;
-  }
-  switch (props.checked) {
-    case true:
-      backgroundColor = "#33CA7F";
-      break;
-    case false:
-      switch (props.priority) {
-        case 1:
-          backgroundColor = "#FD5D5D";
-          break;
-        case 2:
-          backgroundColor = "orange";
-          break;
-        case 3:
-          backgroundColor = "#343a40";
-          break;
-      }
-      break;
+  let className = "priority ui inverted segment " + colors[props.priority];
+  if (props.checked) {
+    className = "priority ui inverted segment checked ";
+    className = className + checkedColors[props.priority];
   }
 
   function Change() {
@@ -37,10 +15,7 @@ const PrintTodo = (props) => {
   }
 
   return (
-    <div
-      className="ui inverted segment"
-      style={{ borderRadius: "10px", backgroundColor }}
-    >
+    <div className={className} style={{ borderRadius: "10px" }}>
       <div
         className="ui inverted relaxed divided list"
         style={{ color: "red" }}
@@ -65,17 +40,25 @@ const PrintTodo = (props) => {
                 onClick={Change}
                 checked={props.checked}
               />
-              <label style={{ color: "white", textDecoration: "none" }}>
+              <label
+                style={{
+                  color: "white",
+                  textDecoration: "none",
+                }}
+              >
                 CHECK
               </label>
             </div>
 
             {props.text}
+
             <button
               onClick={() => props.onDelete(props.index)}
-              className="negative ui button"
+              className="negative ui button "
               style={{
-                boxShadow: "1px 1px",
+                color: "red",
+                boxShadow: "1.5px 1.5px",
+                backgroundColor: "white",
                 display: "flex",
                 alignItems: "flex-end",
                 padding: "8px",
