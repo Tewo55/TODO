@@ -2,10 +2,10 @@ import React from "react";
 import PrioritySelect from "./PrioritySelect";
 import ReactDOM from "react-dom";
 import PrintTodo from "./PrintTodo";
+import AddTodoFrom from "./AddTodoForm";
 
 class App extends React.Component {
   state = {
-    value: "",
     list: [],
     priority: 3,
   };
@@ -24,20 +24,15 @@ class App extends React.Component {
     this.setState({ list: list2 });
   };
 
-  getInput = (event) => {
-    this.setState({ value: event.target.value });
-  };
-
-  addItem = (e) => {
-    e.preventDefault();
-    if (this.state.value === "") {
+  addItem = (tittle) => {
+    if (tittle === "") {
       alert("Fehler");
     } else {
       this.setState({
         list: [
           ...this.state.list,
           {
-            title: this.state.value,
+            title: tittle,
             priorität: this.state.priority,
           },
         ],
@@ -77,29 +72,9 @@ class App extends React.Component {
           </h2>
 
           <p></p>
-          <form onSubmit={this.printValue}>
-            <div className="ui input focus">
-              <input
-                type="text"
-                value={this.state.value}
-                placeholder="Eingabe"
-                onChange={this.getInput}
-                style={{ marginRight: "10%" }}
-              />
-            </div>
-            <div style={{ padding: "5px" }}>
-              <button
-                style={{
-                  position: "relative",
-                  width: "auto",
-                }}
-                className="ui inverted primary button"
-                onClick={this.addItem}
-              >
-                Hinzufügen
-              </button>
-            </div>
-          </form>
+
+          <AddTodoFrom onClick={this.addItem} />
+
           {this.state.list.map((item, index) => (
             <PrintTodo
               checked={item.checked}
