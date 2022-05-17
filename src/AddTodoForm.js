@@ -8,7 +8,8 @@ const AddTodoForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.onClick(value);
+    const todo = { title: value, priorität: 3 };
+    props.onClick(todo);
     setValue("");
   };
 

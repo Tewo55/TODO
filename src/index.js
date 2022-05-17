@@ -24,21 +24,11 @@ class App extends React.Component {
     this.setState({ list: list2 });
   };
 
-  addItem = (tittle) => {
-    if (tittle === "") {
-      alert("Fehler");
-    } else {
-      this.setState({
-        list: [
-          ...this.state.list,
-          {
-            title: tittle,
-            priorität: this.state.priority,
-          },
-        ],
-        value: "",
-      });
-    }
+  addItem = (todo) => {
+    this.setState({
+      list: [...this.state.list, todo],
+      value: "",
+    });
   };
 
   handlePrioritySelected = (priority) => {
